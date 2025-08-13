@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import OrderBtn from "../../components/OrderBtn";
 import { CartContext } from "../../contexts/CartContext";
+import { StyleContext } from "../../contexts/StyleContext";
 import { formatePrice } from "../../helpers/formatePrice";
 import "./OrderConfirmed.css";
 import ProductInOrder from "./Product-In-Order";
 
 const OrderConfirmed = () => {
   const { cart, clearCart, cartTotalPrice } = useContext(CartContext);
+  const { close } = useContext(StyleContext);
 
   return (
     <div className="order">
@@ -30,8 +32,8 @@ const OrderConfirmed = () => {
 
       <OrderBtn
         onClick={() => {
-          clearCart();
           close();
+          clearCart();
         }}
       >
         Start New Order
